@@ -4,6 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Jerridd Speidel/AndroidStudioProjects/WeatherApp/app/src/main/res/layout/activity_main.xml" value="0.20199275362318841" />
+        <entry key="..\:/Users/Jerridd Speidel/AndroidStudioProjects/WeatherApp/app/src/main/res/layout/fragment_current_conditions.xml" value="0.2" />
+        <entry key="..\:/Users/Jerridd Speidel/AndroidStudioProjects/WeatherApp/app/src/main/res/layout/fragment_forecast.xml" value="0.2" />
+        <entry key="..\:/Users/Jerridd Speidel/AndroidStudioProjects/WeatherApp/app/src/main/res/layout/view_forecast_item.xml" value="0.259375" />
+        <entry key="..\:/Users/Jerridd Speidel/AndroidStudioProjects/WeatherApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>
     </option>
   </component>
