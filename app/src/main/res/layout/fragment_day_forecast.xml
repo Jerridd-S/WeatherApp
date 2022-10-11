@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="96dp">
+
+    <ImageView
+        android:id="@+id/the_days_icon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/clear_sky"
+        android:importantForAccessibility="no"
+        android:layout_margin="12dp"
+        android:adjustViewBounds="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/monthDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jan 13"
+        android:textSize="14sp"
+        android:layout_margin="12dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/the_days_icon"
+        app:layout_constraintTop_toTopOf="@id/the_days_icon"
+        app:layout_constraintBottom_toBottomOf="@id/the_days_icon"/>
+
+    <TextView
+        android:id="@+id/daysTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Temp: 00"
+        android:textSize="12sp"
+        android:layout_marginLeft="24dp"
+        app:layout_constraintStart_toEndOf="@id/monthDay"
+        app:layout_constraintTop_toTopOf="@id/the_days_icon"
+        app:layout_constraintBottom_toBottomOf="@id/monthDay"/>
+
+    <TextView
+        android:id="@+id/daysHigh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="High: 00"
+        android:textSize="12sp"
+
+        app:layout_constraintStart_toStartOf="@id/daysTemp"
+        app:layout_constraintTop_toBottomOf="@id/daysTemp" />
+
+    <TextView
+        android:id="@+id/daysLow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Low: 00"
+        android:textSize="12sp"
+        android:layout_marginLeft="12dp"
+        app:layout_constraintStart_toEndOf="@id/daysHigh"
+        app:layout_constraintTop_toBottomOf="@id/daysTemp" />
+
+    <TextView
+        android:id="@+id/daysSunrise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sunrise: 00:00am"
+        android:textSize="12sp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/daysTemp" />
+
+    <TextView
+        android:id="@+id/daysSunset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sunset: 00:00pm"
+        android:textSize="12sp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/daysSunrise" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

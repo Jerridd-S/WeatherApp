@@ -2,6 +2,9 @@ package com.example.weatherapp
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
+import java.time.LocalDateTime
+import java.time.ZoneOffset
+import java.time.format.DateTimeFormatter
 
 @Parcelize
 data class DayForecast(
@@ -12,3 +15,4 @@ data class DayForecast(
     val pressure: Float,
     val humidity: Int
 ) : Parcelable
+
