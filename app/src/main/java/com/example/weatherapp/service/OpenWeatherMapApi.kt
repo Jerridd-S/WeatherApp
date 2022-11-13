@@ -19,6 +19,7 @@ interface OpenWeatherMapApi {
     suspend fun getForecast(
         @Query("zip") zip: String,
         @Query("appid") apiKey: String = "940096c4c8465d186bd8ecbff2803d66",
+        @Query("cnt") cnt: Int = 16,
         @Query("units") units: String = "imperial",
     ) : Forecast
 }
