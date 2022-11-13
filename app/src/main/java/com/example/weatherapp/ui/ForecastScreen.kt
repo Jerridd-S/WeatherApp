@@ -10,6 +10,9 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -19,9 +22,11 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.weatherapp.R
 
 import com.example.weatherapp.models.DayForecast
+import com.example.weatherapp.models.Forecast
 import com.example.weatherapp.models.ForecastTemp
 import com.example.weatherapp.toHourMinute
 import com.example.weatherapp.toMonthDay
@@ -48,7 +53,16 @@ val forecastData = listOf(
 )
 
 @Composable
-fun ForecastScreen(){
+fun ForecastScreen(
+    viewModel: ForecastViewModel = hiltViewModel(),
+){
+
+    val state by viewModel.forecast.collectAsState(null)
+
+    LaunchedEffect(Unit){
+        viewModel.fetchData()
+    }
+
     LazyColumn {
         items(items = forecastData) { item: DayForecast ->
             ForecastRow(item = item)
@@ -57,7 +71,9 @@ fun ForecastScreen(){
 }
 
 @Composable
-private fun ForecastRow(item: DayForecast){
+private fun ForecastRow(
+    item: DayForecast,
+){
     Row(
         modifier = Modifier
             .padding(
@@ -99,7 +115,7 @@ private fun ForecastRow(item: DayForecast){
         Column(
             horizontalAlignment = Alignment.End,
             modifier = Modifier.padding(
-                end = 12.dp,
+            end = 12.dp,
             )
         ) {
             Text(

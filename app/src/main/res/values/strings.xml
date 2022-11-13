@@ -10,5 +10,6 @@
     <string name="forecast">Forecast</string>
     <string name="sunrise">Sunrise: %s</string>
     <string name="sunset">Sunset: %s</string>
-
+    <string name="temperature">%s\u00B0</string>
+    <string name="locationName">%s</string>
 </resources>
