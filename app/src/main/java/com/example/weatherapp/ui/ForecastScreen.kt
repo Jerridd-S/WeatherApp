@@ -28,6 +28,7 @@ import com.example.weatherapp.R
 import com.example.weatherapp.models.DayForecast
 import com.example.weatherapp.models.Forecast
 import com.example.weatherapp.models.ForecastTemp
+import com.example.weatherapp.models.LatitudeLongitude
 import com.example.weatherapp.toHourMinute
 import com.example.weatherapp.toMonthDay
 
@@ -35,13 +36,20 @@ import com.example.weatherapp.toMonthDay
 
 @Composable
 fun ForecastScreen(
+    latitudeLongitude: LatitudeLongitude?,
     viewModel: ForecastViewModel = hiltViewModel(),
-){
 
+){
     val state by viewModel.forecast.collectAsState(null)
 
-    LaunchedEffect(Unit){
-        viewModel.fetchData()
+    if (latitudeLongitude != null){
+        LaunchedEffect(Unit){
+            viewModel.fetchForecastLoctaionData(latitudeLongitude)
+        }
+    }else{
+        LaunchedEffect(Unit){
+            viewModel.fetchData()
+        }
     }
 
     Column {

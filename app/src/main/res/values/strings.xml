@@ -12,4 +12,5 @@
     <string name="sunset">Sunset: %s</string>
     <string name="temperature">%s\u00B0</string>
     <string name="locationName">%s</string>
+    <string name="get_weather_for_my_location">Get Weather for My Location</string>
 </resources>
