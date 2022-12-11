@@ -1,5 +1,7 @@
 package com.example.weatherapp.ui
 
+import android.annotation.SuppressLint
+import android.app.Activity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -8,6 +10,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -28,29 +31,44 @@ import com.example.weatherapp.R
 import com.example.weatherapp.models.DayForecast
 import com.example.weatherapp.models.Forecast
 import com.example.weatherapp.models.ForecastTemp
+import com.example.weatherapp.models.LatitudeLongitude
 import com.example.weatherapp.toHourMinute
 import com.example.weatherapp.toMonthDay
 
 
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun ForecastScreen(
+    latitudeLongitude: LatitudeLongitude?,
     viewModel: ForecastViewModel = hiltViewModel(),
+
 ){
 
     val state by viewModel.forecast.collectAsState(null)
 
-    LaunchedEffect(Unit){
-        viewModel.fetchData()
-    }
-
-    Column {
-        state?.let {
-            for(i in 0 until it.count){
-                ForecastRow(it, i)
-            }
+    if (latitudeLongitude != null){
+        LaunchedEffect(Unit){
+            viewModel.fetchForecastLoctaionData(latitudeLongitude)
+        }
+    }else{
+        LaunchedEffect(Unit){
+            viewModel.fetchData()
         }
     }
+    Scaffold(
+        topBar = { AppBar(title = stringResource(id = R.string.app_name)) }
+    ) {
+        Column {
+            state?.let {
+                for(i in 0 until it.count){
+                    ForecastRow(it, i)
+                }
+            }
+
+        }
+    }
+
 }
 
 @Composable

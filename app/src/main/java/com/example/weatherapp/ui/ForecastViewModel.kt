@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 import android.util.Log
+import com.example.weatherapp.models.LatitudeLongitude
 
 @HiltViewModel
 class ForecastViewModel @Inject constructor(private val api: OpenWeatherMapApi): ViewModel() {
@@ -18,7 +19,12 @@ class ForecastViewModel @Inject constructor(private val api: OpenWeatherMapApi):
     public val forecast: Flow<Forecast> = _forecast.receiveAsFlow()
 
     fun fetchData() = runBlocking {
-        val forecast = api.getForecast("55418")
+        val forecast = api.getForecast("10018")
+        _forecast.trySend(forecast)
+    }
+
+    fun fetchForecastLoctaionData(latitudeLongitude: LatitudeLongitude) = runBlocking{
+        val forecast = api.getForecast(latitudeLongitude.latitude, latitudeLongitude.longitude)
         _forecast.trySend(forecast)
     }
 }
